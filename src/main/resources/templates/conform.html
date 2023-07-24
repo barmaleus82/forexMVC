@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+    <title>Create Period</title>
+</head>
+<body>
+<div id="content">
+    <div th:replace="header"></div>
+    <h2 th:utext="${message}"></h2>
+    <h2 th:utext="${backLink}"></h2>
+
+    <form th:action="${backLink}" method="get">
+        <button type="submit" class="input-button" style="margin-left: 30px">Accept</button>
+    </form>
+    <button onclick="location.href='/home'" class="input-button" style="margin-left: 30px">Return</button>
+</div>
+</body>
+</html>

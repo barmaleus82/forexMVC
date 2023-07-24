@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+    <title>Create Currency</title>
+</head>
+<body>
+    <div id="content">
+        <div th:replace="header"></div>
+        <h2>Create New Currency</h2>
+        <form th:action="@{/currency/create}" th:object="${currency}" method="post">
+            <table class="input-table">
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" th:class="'input-field'" th:field="*{name}"/></td>
+                </tr>
+                <tr>
+                    <td>Spred:</td>
+                    <td><input type="text" th:class="'input-field'" th:field="*{spread}"/></td>
+                </tr>
+                <tr>
+                    <td>Swap:</td>
+                    <td><input type="text" th:class="'input-field'" th:field="*{swap}"/></td>
+                </tr>
+                <tr>
+                    <td>Point ratio:</td>
+                    <td><input type="text" th:class="'input-field'" th:field="*{pointRatio}"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" class="input-button" value="Add Currency"/>
+                        <input type="reset" class="input-button" value="Clear"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

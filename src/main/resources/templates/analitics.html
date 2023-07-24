@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+    <title>Analitic</title>
+</head>
+<body>
+    <div id="content">
+        <div th:replace="header"></div>
+
+        <a th:href="@{/analitics/activity/5}" style="margin-left: 30px">Statistics 5 min</a><br>
+        <a th:href="@{/analitics/activity/60}" style="margin-left: 30px">Statistics 1 hour</a><br>
+
+        <a th:href="@{/analitics/period-max-min/5}" style="margin-left: 30px">Period max-min 5 min</a><br>
+    </div>
+</body>
+</html>

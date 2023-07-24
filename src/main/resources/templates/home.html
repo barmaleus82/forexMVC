@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+    <title>Home</title>
+</head>
+<body>
+    <div id="content">
+        <div th:replace="header"></div>
+
+<!--        <form th:action="@{/files/create}" method="get">-->
+<!--            <button type="submit" class="input-button">New Rate File</button>-->
+<!--        </form>-->
+        <button onclick="location.href='/files/create'" class="input-button">New Rate File</button>
+        <button onclick="location.href='/files/search'" class="input-button">Search files</button>
+        <button onclick="location.href='/rates/upload'" class="input-button">Upload files</button>
+
+        <table class="input-table">
+            <thead>
+            <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Last uploading</th>
+                <th>Currency</th>
+                <th>Period</th>
+                <th>Operations</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="file, rowStat: ${files}">
+                <td><span th:text="${rowStat.index + 1}">No</span></td>
+                <td><span th:text="${file.fileName}">Name</span></td>
+                <td><span th:text="${file.lastUploaded}">Last uploading</span></td>
+                <td><span th:text="${file.currency?.name}">Courrency</span></td>
+                <td><span th:text="${file.period?.name}">Period</span></td>
+                <td>
+                    <a th:href="@{'/files/' + ${file.id} + '/update'}">Edit</a>
+                    <a th:href="@{'/rates/' + ${file.id} + '/upload'}">Upload</a>
+                    <a th:href="@{'/files/' + ${file.id} + '/delete'}">Remove</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <form th:action="@{/currency/create}" method="get">
+            <button type="submit" class="input-button">New Currency</button>
+        </form>
+        <table class="input-table">
+            <thead>
+            <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Spread</th>
+                <th>Swap</th>
+                <th>Point ratio</th>
+                <th>Operations</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="curr, iStat: ${currencies}">
+                <td><span th:text="${iStat.index + 1}">No</span></span></td>
+                <td><span th:text="${curr.name}">Name</span></span></td>
+                <td><span th:text="${curr.spread}">Spred</span></span></td>
+                <td><span th:text="${curr.swap}">Swap</span></span></td>
+                <td><span th:text="${curr.pointRatio}">Point ratio</span></span></td>
+                <td>
+                    <a th:href="@{'/currency/' + ${curr.id} + '/update'}">Edit</a>
+                    <a th:href="@{'/currency/' + ${curr.id} + '/delete'}">Remove</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <form th:action="@{/period/create}" method="get">
+            <button type="submit" class="input-button">New Period</button>
+        </form>
+        <table class="input-table">
+            <thead>
+            <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Step (min)</th>
+                <th>Operations</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="period, iStat: ${periods}">
+                <td><span th:text="${iStat.index + 1}">No</span></span></td>
+                <td><span th:text="${period.name}">Name</span></span></td>
+                <td><span th:text="${period.step}">Step</span></span></td>
+                <td>
+                    <a th:href="@{'/period/' + ${period.id} + '/update'}">Edit</a>
+                    <a th:href="@{'/period/' + ${period.id} + '/delete'}">Remove</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

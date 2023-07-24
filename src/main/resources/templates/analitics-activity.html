@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+    <title>Activity</title>
+</head>
+<body>
+    <div id="content">
+        <div th:replace="header"></div>
+        <h2><span th:text="${period}">Name</span></h2>
+        <table class="analitics-table">
+            <p th:each="curr : ${map.keySet()}">
+<!--                class="input-table">-->
+                <thead>
+                <tr>
+                    <th th:text="${curr.name}"></th>
+                    <th>middle</th>
+                    <th>00</th><th>01</th><th>02</th><th>03</th><th>04</th><th>05</th><th>06</th><th>07</th>
+                    <th>08</th><th>09</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th>
+                    <th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th>
+                </tr>
+                </thead>
+                <tbody>
+<!--                <tr th:text="${curr.name}"></tr>-->
+                <tr th:each="list : ${map.get(curr)}">
+                    <td th:each="item : ${list}" th:text="${item}"></td>
+                    <!--                    <td th:each="item : ${list}" th:text="${item}" style="margin: 0px 5px 0px 5px; text-align: right;"></td>-->
+                </tr>
+                </tbody>
+            </p>
+        </table>
+    </div>
+</body>
+</html>
+
+
+<!--<tr th:each="curr : ${map.keySet()}">-->
+<!--    <table style="border-style:solid">-->
+<!--        &lt;!&ndash;                class="input-table">&ndash;&gt;-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th th:text="${curr.name}"></th>-->
+<!--            <th>middle</th>-->
+<!--            <th>00</th><th>01</th><th>02</th><th>03</th><th>04</th><th>05</th><th>06</th><th>07</th>-->
+<!--            <th>08</th><th>09</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th>-->
+<!--            <th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        &lt;!&ndash;                <tr th:text="${curr.name}"></tr>&ndash;&gt;-->
+<!--        <tr th:each="list : ${map.get(curr)}">-->
+<!--            <td th:each="item : ${list}" th:text="${item}"></td>-->
+<!--            &lt;!&ndash;                    <td th:each="item : ${list}" th:text="${item}" style="margin: 0px 5px 0px 5px; text-align: right;"></td>&ndash;&gt;-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--</tr>-->

@@ -1,0 +1,158 @@
+
+.tasks-list {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    padding-right: 20px; /* Add desired padding value on the right */
+    width: 98%;
+    margin: 1%;
+}
+
+.tasks-list th { /*td*/
+    border: 1px solid #ddd;
+    padding: 5px;
+    white-space: nowrap;
+}
+
+.tasks-list tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+.tasks-list tr:hover {
+    background-color: lightgrey;
+}
+
+.tasks-list th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+    text-align: left;
+    background-color: #ddd;
+    color: black;
+}
+
+td{
+    padding: 0px 5px 0px 5px;
+    text-align: right;
+}
+
+th a{
+    margin: 0px 5px 0px 5px
+}
+
+
+.task-details {
+    font-size: 18px;
+    margin-left: 50px;
+    display: grid;
+    grid-template-columns: 120px auto;
+    gap: 10px;
+}
+
+.task-details strong {
+    text-align: right;
+}
+
+.input-table {
+    font-size: 12px;
+    margin: 5px 0px 5px 10px;
+}
+
+.input-field{
+    font-size: 14px;
+}
+
+.input-table span{
+    margin: 0px 10px 0px 10px;
+}
+
+
+.input-button {
+    background-color: #B0E0E6;
+    margin: 5px 0px 5px 10px;
+
+/*
+    font-size: 14px;
+    margin: 5px 5px;
+    padding: 5px 5px 5px 5px;
+*/
+}
+
+.analitics-table {
+    border:1px solid black;
+    margin-left: 10px;
+}
+
+.analitics-table th {
+    border:1px solid black;
+}
+
+/*
+.analitics-table {
+    border-style: solid;
+}
+*/
+
+/*Igor Kryvolutskyi*/
+h1{
+    margin-left: 50px;
+}
+h2{
+    margin-left: 30px;
+}
+nav {
+    background-color: #B0E0E6;
+    width: 96%;
+    margin: 1%;
+    padding: 1%;
+    font-size: 16px;
+}
+
+nav ul {
+    margin: 0px;
+    list-style-type: none;
+    padding: 5px 0px 5px 0px;
+}
+nav ul li {
+    display: inline;
+    padding: 5px 10px 5px 10px;
+}
+nav ul li a:link, nav ul li a:visited {
+    color: black;
+    border-bottom: none;
+    font-weight: bold;
+}
+
+body {
+    background-color: #B0E0E6;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: small;
+    margin: 0px;
+    height: 100%;
+}
+
+#content {
+    width: 80%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #FFFFFF;
+    margin-left: auto;
+    margin-right: auto;
+    height: 98%;
+    position:relative;
+}
+
+footer {
+    background-color: #B0E0E6;
+    width: 96%;
+    text-align: center;
+    margin: 1%;
+    padding: 1%;
+    font-size: 90%;
+    position: absolute;
+    bottom: 0px;
+}
+
+logo{
+    font-family: Arial, Helvetica;
+    font-size: 60px;
+}
