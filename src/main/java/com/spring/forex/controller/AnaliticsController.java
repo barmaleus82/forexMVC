@@ -15,10 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 
 @Controller
@@ -66,6 +63,23 @@ public class AnaliticsController {
         for (Currency curr : currencyService.getAll()) {
             statistics.openClosePair(curr, period);
         }
+        return "redirect:/home";
+    }
+
+    @GetMapping("/average-max-min-open-close/{period_step}")
+    public String averageMaxMinOpenClose(Model model, @PathVariable("period_step") int period_step) {
+        Period period = periodService.getByStep(period_step);
+
+        Map<Currency, String> resultMap = new TreeMap<>();
+        List<Integer> hours = Arrays.asList(7,8,9,10); //2,3,4,
+        for (Currency curr : currencyService.getAll()) {
+            resultMap.put(curr, statistics.averageMaxMinOpenClose(curr, period, hours));
+        }
+
+        for (Currency curr : resultMap.keySet()){
+            System.out.println(curr.getName()+": "+resultMap.get(curr));
+        }
+
         return "redirect:/home";
     }
 }

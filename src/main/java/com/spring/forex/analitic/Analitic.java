@@ -161,4 +161,62 @@ public class Analitic {
 
         return null;
     }
+
+    public String averageMaxMinOpenClose(Currency currency, Period period, List<Integer> hours) {
+        List<Rate> currList = rateRepository.getByCurrencyIdPeriodId(currency.getId(), period.getId());
+
+        List<Double> arrHour = new ArrayList<>();
+        List<Double> minMaxHour = new ArrayList<>();
+
+        List<Double> arrPeriod = new ArrayList<>();
+        List<Double> minMaxPeriod = new ArrayList<>();
+
+        double periodMax = 0.0;
+        double periodMin = 1000000.0;
+        double periodOpen = 0.0;
+        double periodClose = 0.0;
+
+        for (Rate rate : currList) {
+            int pos = rate.getDateTime().getHour() - 8;
+            if (pos < 0) {
+                pos += 24;
+            }
+            if (hours.contains(pos)) {
+
+                arrHour.add(Math.abs(rate.getOpen() - rate.getClose()));
+                minMaxHour.add((rate.getMax() - rate.getMin()));
+
+                periodOpen = periodOpen > 0 ? periodOpen : rate.getOpen();
+                periodMin = Math.min(periodMin, rate.getMin());
+                periodMax = Math.max(periodMax, rate.getMax());
+                periodClose = rate.getClose();
+            }
+
+            if (pos > hours.get(hours.size()-1) && periodOpen > 0) {
+
+                arrPeriod.add(Math.abs(periodOpen - periodClose));
+                minMaxPeriod.add(periodMax - periodMin);
+
+                periodMax = 0.0;
+                periodMin = 10000000.0;
+                periodOpen = 0.0;
+                periodClose = 0.0;
+            }
+        }
+
+        Collections.sort(arrHour);
+        Collections.sort(minMaxHour);
+        Collections.sort(arrPeriod);
+        Collections.sort(minMaxPeriod);
+
+        double koef = 0.75;
+
+        return String.format("%.6f - %.6f; %.6f - %.6f",
+                arrHour.get(arrHour.size() - (int)(arrHour.size() * koef)),
+                minMaxHour.get(minMaxHour.size() - (int)(minMaxHour.size() * koef)),
+                arrPeriod.get(arrPeriod.size() - (int)(arrPeriod.size() * koef)),
+                minMaxPeriod.get(minMaxPeriod.size() - (int)(minMaxPeriod.size() * koef))
+        );
+    }
+
 }
